@@ -96,6 +96,11 @@ public final class RedisSessionManager extends SessionManagerSkeleton<RedisSessi
     }
 
     @Override
+    protected void shutdownSessions() throws Exception {
+        //do nothing here
+    }
+
+    @Override
     protected RedisSession loadSession(final String clusterId, final RedisSession current) {
         long now = System.currentTimeMillis();
         RedisSession loaded;
