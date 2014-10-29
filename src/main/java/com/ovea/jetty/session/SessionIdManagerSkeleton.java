@@ -39,7 +39,7 @@ public abstract class SessionIdManagerSkeleton extends AbstractSessionIdManager 
     // for a session id in the whole jetty, each webapp can have different sessions for the same id
     private final ConcurrentMap<String, Object> sessions = new ConcurrentHashMap<String, Object>();
 
-    private final Server server;
+    protected final Server server;
 
     private long scavengerInterval = 60 * 1000; // 1min
     private ScheduledFuture<?> scavenger;
@@ -137,6 +137,11 @@ public abstract class SessionIdManagerSkeleton extends AbstractSessionIdManager 
         sessions.putIfAbsent(clusterId, Void.class);
     }
 
+    public final void addSession(String clusterId) {
+        storeClusterId(clusterId);
+        sessions.putIfAbsent(clusterId, Void.class);
+    }
+
     @Override
     public final void removeSession(HttpSession session) {
         String clusterId = getClusterId(session.getId());
@@ -144,6 +149,20 @@ public abstract class SessionIdManagerSkeleton extends AbstractSessionIdManager 
             sessions.remove(clusterId);
             deleteClusterId(clusterId);
         }
+    }
+
+    public void removeSession (String clusterId) {
+        if (clusterId == null)
+            return;
+        if (LOG.isDebugEnabled())
+            LOG.debug("Removing sessionid="+clusterId);
+            try {
+                sessions.remove(clusterId);
+                deleteClusterId(clusterId);
+            } catch(Exception e) {
+                LOG.warn("Problem removing session id=" + clusterId, e);
+            }
+
     }
 
     @Override

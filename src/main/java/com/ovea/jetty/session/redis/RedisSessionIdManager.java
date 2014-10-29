@@ -16,7 +16,11 @@
 package com.ovea.jetty.session.redis;
 
 import com.ovea.jetty.session.SessionIdManagerSkeleton;
+import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.SessionManager;
+import org.eclipse.jetty.server.handler.ContextHandler;
+import org.eclipse.jetty.server.session.SessionHandler;
 import org.eclipse.jetty.util.log.Log;
 import org.eclipse.jetty.util.log.Logger;
 import redis.clients.jedis.Jedis;
@@ -39,7 +43,6 @@ public final class RedisSessionIdManager extends SessionIdManagerSkeleton {
     private static final Long ZERO = 0L;
     private static final String REDIS_SESSIONS_KEY = "jetty-sessions";
     static final String REDIS_SESSION_KEY = "jetty-session-";
-
     private final JedisExecutor jedisExecutor;
 
     public RedisSessionIdManager(Server server, JedisPool jedisPool) {
@@ -124,6 +127,24 @@ public final class RedisSessionIdManager extends SessionIdManagerSkeleton {
 
     @Override
     public void renewSessionId(String s, String s2, HttpServletRequest httpServletRequest) {
+        String newClusterId = newSessionId(httpServletRequest.hashCode());
+        removeSession(s); //remove the old one from the list (and database)
+        addSession(newClusterId); //add in the new session id to the list (and database)
 
+        //tell all contexts to update the id
+        Handler[] contexts = server.getChildHandlersByClass(ContextHandler.class);
+        for (int i=0; contexts!=null && i<contexts.length; i++)
+        {
+            SessionHandler sessionHandler = ((ContextHandler)contexts[i]).getChildHandlerByClass(SessionHandler.class);
+            if (sessionHandler != null)
+            {
+                SessionManager manager = sessionHandler.getSessionManager();
+
+                if (manager != null && manager instanceof RedisSessionManager)
+                {
+                    ((RedisSessionManager)manager).renewSessionId(s, s2, newClusterId, getNodeId(newClusterId, httpServletRequest));
+                }
+            }
+        }
     }
 }
