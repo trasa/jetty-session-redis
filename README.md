@@ -3,8 +3,8 @@
 # Jetty session clustering with REDIS
 
 * [REDIS website](http://redis.io/) (tested on version 2.2.1)
-* [JEDIS website](https://github.com/xetorthio/jedis) (tested on version 1.5.2)
-* [Jetty website](http://www.eclipse.org/jetty/) (tested on version 8.0.0.M2)
+* [JEDIS website](https://github.com/xetorthio/jedis) (tested on version 2.6.0)
+* [Jetty website](http://www.eclipse.org/jetty/) (tested on version 9.2.3.v20140905)
 
 ## Build instruction:
 
