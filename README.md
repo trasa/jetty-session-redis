@@ -1,3 +1,5 @@
+** Note: This version may not work with versions of Jetty older than 9
+
 # Jetty session clustering with REDIS
 
 * [REDIS website](http://redis.io/) (tested on version 2.2.1)
