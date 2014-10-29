@@ -8,7 +8,7 @@
 
 ## Build instruction:
 
-    git clone git://github.com/Ovea/jetty-session-redis.git
+    git clone git@github.com:jcern/jetty-session-redis.git
     cd jetty-session-redis
     mvn package
 
@@ -70,9 +70,9 @@ In Jetty server configuration file (i.e. jetty.xml):
             <Arg>
                 <New class="redis.clients.jedis.JedisPool">
                     <Arg>
-                        <New class="org.apache.commons.pool.impl.GenericObjectPool$Config">
+                        <New class="org.apache.commons.pool2.impl.GenericObjectPoolConfig">
                             <Set type="int" name="minIdle">5</Set>
-                            <Set type="int" name="maxActive">15</Set>
+                            <Set type="int" name="maxTotal">15</Set>
                             <Set type="boolean" name="testOnBorrow">true</Set>
                         </New>
                     </Arg>
@@ -161,10 +161,10 @@ To see all Redis requests going to the Redis server. If you are using a String s
 The latest release (>= 2.1.ga) must be used with at least these dependencies:
 
 * com.ovea:jetty-session-redis:2.1.ga:serialjson
-* org.eclipse.jetty.aggregate:jetty-all:8.0.2.v20111006
+* org.eclipse.jetty.aggregate:jetty-all:9.2.3.v20140905
 * org.mortbay.jetty:servlet-api:3.0.20100224
-* redis.clients:jedis:2.0.0
-* commons-pool:commons-pool:1.5.6
+* redis.clients:jedis:2.6.0
+* commons-pool:commons-pool:2.2.0
 
 ## Authors and help
 
