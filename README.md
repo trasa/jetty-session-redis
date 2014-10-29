@@ -1,4 +1,4 @@
-**Note: This version may not work with versions of Jetty older than 9
+**Note: This version may not work with versions of Jetty older than 9**
 
 # Jetty session clustering with REDIS
 
