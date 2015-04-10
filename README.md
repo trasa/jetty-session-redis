@@ -164,7 +164,7 @@ The latest release (>= 2.1.ga) must be used with at least these dependencies:
 * org.eclipse.jetty.aggregate:jetty-all:9.2.3.v20140905
 * org.mortbay.jetty:servlet-api:3.0.20100224
 * redis.clients:jedis:2.6.0
-* commons-pool:commons-pool:2.2.0
+* commons-pool2:commons-pool2:2.3.0
 
 ## Authors and help
 
