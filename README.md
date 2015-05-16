@@ -6,6 +6,14 @@
 * [JEDIS website](https://github.com/xetorthio/jedis) (tested on version 2.6.0)
 * [Jetty website](http://www.eclipse.org/jetty/) (tested on version 9.2.3.v20140905)
 
+## Meancat Fork
+
+I have forked this from the 9.2.3 fork to switch the various 
+dependency versions around to the versions I'm using currently.
+The documentation below here has not been updated and may or 
+may not work for you.
+
+
 ## Build instruction:
 
     git clone git@github.com:jcern/jetty-session-redis.git

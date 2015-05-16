@@ -15,9 +15,10 @@
  */
 package com.ovea.jetty.session;
 
+import org.eclipse.jetty.server.session.MemSession;
+
 import org.eclipse.jetty.server.session.AbstractSession;
 import org.eclipse.jetty.server.session.AbstractSessionManager;
-import org.eclipse.jetty.server.session.MemSession;
 import org.eclipse.jetty.util.LazyList;
 import org.eclipse.jetty.util.log.Log;
 import org.eclipse.jetty.util.log.Logger;
