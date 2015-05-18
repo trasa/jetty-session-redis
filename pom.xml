@@ -17,7 +17,9 @@
     <description>Jetty session clustering with Redis</description>
 
     <properties>
-        <jetty.version>9.2.10.v20150310</jetty.version>
+        <!--<jetty.version>9.2.10.v20150310</jetty.version>-->
+        <jetty.version>9.1.1.v20140108</jetty.version>
+
         <jedis.version>2.6.1</jedis.version>
         <jackson.version>2.4.3</jackson.version>
         <junit.version>4.11</junit.version>

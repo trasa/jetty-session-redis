@@ -15,7 +15,6 @@
  */
 package com.ovea.jetty.session;
 
-import org.eclipse.jetty.server.session.MemSession;
 
 import org.eclipse.jetty.server.session.AbstractSession;
 import org.eclipse.jetty.server.session.AbstractSessionManager;
@@ -208,7 +207,7 @@ public abstract class SessionManagerSkeleton<T extends SessionManagerSkeleton.Se
 
     protected abstract T loadSession(String clusterId, T current);
 
-    public abstract class SessionSkeleton extends MemSession {
+    public abstract class SessionSkeleton extends AbstractSession {
 
         public SessionSkeleton(HttpServletRequest request) {
             super(SessionManagerSkeleton.this, request);
