@@ -10,7 +10,7 @@
 
     <groupId>com.meancat.jetty</groupId>
     <artifactId>jetty-session-redis</artifactId>
-    <version>3.1.1</version>
+    <version>3.1.0</version>
     <packaging>jar</packaging>
 
     <name>jetty-session-redis</name>
