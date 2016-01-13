@@ -8,14 +8,18 @@
         <version>2</version>
     </parent>
 
-    <groupId>com.meancat.jetty</groupId>
     <artifactId>jetty-session-redis</artifactId>
-    <version>3.1.1</version>
+    <version>3.1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>jetty-session-redis</name>
     <description>Jetty session clustering with Redis</description>
 
+    <scm>
+        <connection>scm:git:git@github.com:jcern/${project.name}.git</connection>
+        <developerConnection>scm:git:git@github.com:jcern/${project.name}.git</developerConnection>
+        <url>http://github.com/jcern/${project.name}</url>
+    </scm>
     <properties>
         <jetty.version>9.2.10.v20150310</jetty.version>
 
@@ -249,31 +253,5 @@
         </plugins>
     </build>
 
-    <repositories>
-        <repository>
-            <id>gluwnexus</id>
-            <name>GluwNexus</name>
-            <url>http://gluw-nexus-1.glu.com/content/groups/public</url>
-        </repository>
-
-        <repository>
-            <id>thirdparty-releases</id>
-            <name>JBoss Thirdparty Releases</name>
-            <url>https://repository.jboss.org/nexus/content/repositories/thirdparty-releases</url>
-        </repository>
-    </repositories>
-
-    <distributionManagement>
-        <repository>
-            <id>deployment</id>
-            <name>Internal Releases</name>
-            <url>http://gluw-nexus-1.glu.com/content/repositories/releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>deployment</id>
-            <name>Internal Releases</name>
-            <url>http://gluw-nexus-1.glu.com/content/repositories/snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
 </project>
 
